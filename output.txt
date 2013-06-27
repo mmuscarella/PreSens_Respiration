@@ -1,0 +1,8 @@
+Sample,Start,End,Rate (然 O2 Hr-1),R2,P-value
+Lake5,0,69.6,0.773,0.959,<0.001
+Lake5,0,69.6,0.773,0.959,<0.001
+Sample,Start,End,Rate (然 O2 Hr-1),R2,P-value
+Sample,Start,End,Rate (然 O2 Hr-1),R2,P-value
+Sample,Start,End,Rate (然 O2 Hr-1),R2,P-value
+A1,0,69.6,0.797,0.951,<0.001
+A2,0,69.6,1.07,0.926,<0.001
