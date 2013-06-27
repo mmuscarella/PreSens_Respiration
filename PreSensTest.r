@@ -5,7 +5,7 @@
 setwd("C:/Users/Mario Muscarella/Documents/PhD Files/PreSens/Analysis Script/")
 rm(list=ls())
 
-user.name <- "M. Muscarella"
+user.name <- "My Name"
 source("PreSensInteractiveRegression.r")
 
 ## Make sure to press enter after entering a sample name in order to update info
