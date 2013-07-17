@@ -1,6 +1,6 @@
 ### Analysis of PreSens Respiration Data
 ### Written By: Mario Muscarella
-### Last Update: 26 June 2013
+### Last Update: 16 July 2013
 
 ## This analysis uses the R package - rpanel which does interactive regression
 ## The goal is to use the interactive view to pick the area to analyze
@@ -8,7 +8,6 @@
 ## Multiple trend chart version; Annual anomaly data
 
 require("rpanel")||install.packages("rpanel")
-require("gWidgets")||install.packages("gWidgets")
 require("xlsx")||install.packages("xlsx")
 
 #options("guiToolkit"="RGtk2")     
@@ -20,8 +19,19 @@ if("user.name" %in% ls() == FALSE){
   }
 
 ## Import Data #################################################################
-infile <- gfile("Open PreSens Data...",type="open")
-data.in <- read.xlsx(infile, "Sheet4", header=T, startRow=11) 
+infile <- file.choose(new=F)
+if (grepl(".xls", infile)){
+  data.in <- read.xlsx(infile, "Sheet4", header=T, startRow=11)
+  } else {
+  if (grepl(".csv", infile)){
+    data.in <- read.csv(infile, header=T, skip=10)
+    } else {
+    if (grepl(".txt", infile)){
+      data.in <- read.delim(infile, header=T, skip=10)
+      }
+      else (print("File must be either Excel or flat format"))
+      }}  
+        
 head(data.in)
 colnames(data.in) <- c("Date", "Time", "A1", "A2", "A3", "A4", "A5", "A6", "B1",
    "B2", "B3", "B4", "B5", "B6", "C1", "C2", "C3", "C4", "C5", "C6", "D1", "D2",
@@ -32,7 +42,7 @@ data.in$Time <- data.in$Time/3600 # Convert sec to Hrs
 data.in[3:26] <- data.in[3:26] * 1000/32 # Convert mg O2/L to uM O2
 
 ## File for output
-outfile <- gfile("File to Save Output",type="save", initialfilename="output.txt")
+outfile <- file.choose(new=T)
 titles <- c("Sample", "Start", "End", "Rate (µM O2 Hr-1)", "R2", "P-value")
 write.table(as.matrix(t(titles)), file=outfile, append=T, row.names=F, col.names=F, sep=",", quote=FALSE)
 
