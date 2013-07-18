@@ -34,7 +34,7 @@ if (grepl(".xls", infile)){
         
 head(data.in)
 colnames(data.in) <- c("Date", "Time", "A1", "B1", "C1", "D1", "A2", "B2", "C2",
- "D3", "A3", "B3", "C3", "D3", "A4", "B4", "C4", "D4", "A5", "B5", "C5", "D5", 
+ "D2", "A3", "B3", "C3", "D3", "A4", "B4", "C4", "D4", "A5", "B5", "C5", "D5", 
  "A6", "B6", "C6", "D6", "Temp", "Error")
 data.in$Date <- strptime(data.in[,1], format="%d.%m.%y %H:%M:%S")
 data.in[data.in == "No Sensor"] <- NA
