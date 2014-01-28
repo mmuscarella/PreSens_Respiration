@@ -1,26 +1,27 @@
-### Analysis of PreSens Respiration Data
-### Written By: Mario Muscarella
-### Last Update: 16 July 2013
+################################################################################
+#                                                                              #
+#  Analysis of PreSens Respiration Data                                        #
+#  Written By: Mario Muscarella                                                #
+#  Last Update: 16 July 2013                                                   #
+#                                                                              #
+#  This analysis uses the R package - rpanel which does interactive regression #
+#  The goal is to use the interactive view to pick the area to analyze         #
+#  rpanel - Interactive Regression                                             #
+#  Multiple trend chart version; Annual anomaly data                           #
+#                                                                              #
+################################################################################
 
-## This analysis uses the R package - rpanel which does interactive regression
-## The goal is to use the interactive view to pick the area to analyze
-## rpanel - Interactive Regression 
-## Multiple trend chart version; Annual anomaly data
+# Load Dependencies
+require("rpanel")||install.packages("rpanel");require("rpanel")
+require("xlsx")||install.packages("xlsx");require("xlsx")
 
-require("rpanel")||install.packages("rpanel")
-require("xlsx")||install.packages("xlsx")
-
-#options("guiToolkit"="RGtk2")     
+# Global Options     
 options(digits=6)
-script <- "Mario's Bad Ass M-F'ing Interactive Regression Analysis"
-if("user.name" %in% ls() == FALSE){
-  user.name <- "Nobody"
-  } else {
-  }
+script <- "Interactive Regression Analysis"
 
 ## Import Data #################################################################
 infile <- file.choose(new=F)
-if (grepl(".xls", infile)){
+if (grepl(".xls", infile)){                      ###1/27/14
   data.in <- read.xlsx(infile, "Sheet4", header=T, startRow=11)
   } else {
   if (grepl(".csv", infile)){
