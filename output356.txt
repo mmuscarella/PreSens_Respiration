@@ -1,3 +1,0 @@
-Sample,Start,End,Rate (µM O2 Hr-1),R2,P-value
-Sample,Start,End,Rate (µM O2 Hr-1),R2,P-value
-Sample,Start,End,Rate (µM O2 Hr-1),R2,P-value
